@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-brand-onyx text-foreground;
+  }
+}
+
+body {
+  --sb-track-color: #111619;
+  --sb-thumb-color: rgb(94, 94, 94);
+  --sb-size: 6px;
+  scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  scrollbar-gutter: stable;
+  font-family: 'Inter';
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 0px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 2px;
+}
+
+.svg-wrapper > svg {
+  width: 60%;
+}
+
+label:has(> input[type='radio']:checked) {
+  border: 2px solid white;
+}

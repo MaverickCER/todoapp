@@ -1,0 +1,13 @@
+model Task {
+  id                                             Int       @id @default(autoincrement())
+  is_active                                      Boolean   @default(true)
+  title                                          String
+  color                                          String
+  completed                                      Boolean   @default(false)
+  createdAt                                      DateTime  @default(now()) @map("created_at")
+  updatedAt                                      DateTime  @updatedAt @map("updated_at")
+  profileId                                      Int       @map("profile_id")
+  profile                                        Profile   @relation(fields: [profileId], references: [id])
+
+  @@map("tasks")
+}

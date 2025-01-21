@@ -1,0 +1,46 @@
+// ------------------------------------------------------
+// IMPORTANT! NEVER EDIT THIS FILE DIRECTLY
+// Please update src/libs/prisma/models and npm run prisma
+// ------------------------------------------------------
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Profile {
+  id                                             Int       @id @default(autoincrement())
+  email                                          String    @unique
+  is_anonymous                                   Boolean?  @default(false)
+  is_active                                      Boolean   @default(true)
+  verified_at                                    DateTime?
+  banned_by                                      Int?
+  banned_at                                      DateTime?
+  banned_until                                   DateTime?
+  banned_reason                                  String?
+  language_code                                  String    @default("en")
+  is_language_ltr                                Boolean   @default(true)
+  createdAt                                      DateTime  @default(now()) @map("created_at")
+  updatedAt                                      DateTime  @updatedAt @map("updated_at")
+  tasks                                          Task[]
+  @@map("profiles")
+}
+
+model Task {
+  id                                             Int       @id @default(autoincrement())
+  is_active                                      Boolean   @default(true)
+  title                                          String
+  color                                          String
+  completed                                      Boolean   @default(false)
+  createdAt                                      DateTime  @default(now()) @map("created_at")
+  updatedAt                                      DateTime  @updatedAt @map("updated_at")
+  profileId                                      Int       @map("profile_id")
+  profile                                        Profile   @relation(fields: [profileId], references: [id])
+
+  @@map("tasks")
+}
+

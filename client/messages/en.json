@@ -1,0 +1,107 @@
+{
+  "locales": {
+    "de": "Deutsch",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français"
+  },
+  "dialog": {
+    "close": "Close"
+  },
+  "error": {
+    "error": "Error",
+    "internal_server_error": "Internal server error",
+    "failed_to_load": "The page you requested failed to load.",
+    "reset": "Reset",
+    "return_home": "Click here to return home",
+    "something_wrong": "Something went wrong!"
+  },
+  "navbar": {
+    "todoapp": "Todo App"
+  },
+  "not_found": {
+    "page": {
+      "tag": "article",
+      "className": "max-w-6xl mx-auto",
+      "children": [
+        {
+          "tag": "h1",
+          "innerText": "The page you requested was not found"
+        },
+        {
+          "tag": "p",
+          "children": [
+            {
+              "tag": "a",
+              "href": "/",
+              "innerText": "Click here to return home"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "create": {
+    "back": "Back"
+  },
+  "createtask": {
+    "createtask": "Create Task"
+  },
+  "task-form": {
+    "titlePlaceholder": "Ex. Brush your teeth",
+    "red": "Red",
+    "orange": "Orange",
+    "yellow": "Yellow",
+    "green": "Green",
+    "blue": "Blue",
+    "indigo": "Indigo",
+    "violet": "Violet",
+    "pink": "Pink",
+    "brown": "Brown",
+    "title": "Title",
+    "color": "Color",
+    "addtask": "Add Task",
+    "save": "Save"
+  },
+  "info": {
+    "tasks": "Tasks",
+    "completed": "Completed",
+    "of": " of "
+  },
+  "task": {
+    "confirm": "Delete Task",
+    "undoimpossible": "Are you sure you want to delete this task? This action cannot be undone.",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "markincomplete": "Mark Incomplete",
+    "markcomplete": "Mark Complete"
+  },
+  "notasks": {
+    "component": {
+      "tag": "p",
+      "children": [
+        {
+          "tag": "strong",
+          "innerText": "You don't have any tasks registered yet."
+        },
+        {
+          "tag": "br"
+        },
+        {
+          "tag": "br"
+        },
+        {
+          "tag": "fragment",
+          "innerText": "Create tasks and organize your to-do items."
+        }
+      ]
+    }
+  },
+  "scroll": {
+    "totop": "Scroll To Top"
+  },
+  "todos": {
+    "redirect_text": "Redirecting to sign-in..."
+  }
+}

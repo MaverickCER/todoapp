@@ -1,0 +1,99 @@
+{
+  "locales": {
+    "de": "Deutsch",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français"
+  },
+  "error": {
+    "error": "Fehler",
+    "internal_server_error": "Interner Serverfehler",
+    "failed_to_load": "Die angeforderte Seite konnte nicht geladen werden.",
+    "reset": "Zurücksetzen",
+    "return_home": "Klicken Sie hier, um zur Startseite zurückzukehren",
+    "something_wrong": "Etwas ist schiefgelaufen!"
+  },
+  "navbar": {
+    "todoapp": "Alle App"
+  },
+  "not_found": {
+    "page": {
+      "tag": "article",
+      "className": "max-w-6xl mx-auto",
+      "children": [
+        {
+          "tag": "h1",
+          "innerText": "Die angeforderte Seite wurde nicht gefunden"
+        },
+        {
+          "tag": "p",
+          "children": [
+            {
+              "tag": "a",
+              "href": "/",
+              "innerText": "Klicken Sie hier, um zur Startseite zurückzukehren"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "create": {
+    "back": "Zurück"
+  },
+  "createtask": {
+    "createtask": "Aufgabe erstellen"
+  },
+  "task-form": {
+    "titlePlaceholder": "Beispiel: Zähne putzen",
+    "red": "Rot",
+    "orange": "Orange",
+    "yellow": "Gelb",
+    "green": "Grün",
+    "blue": "Blau",
+    "indigo": "Indigo",
+    "violet": "Violett",
+    "pink": "Rosa",
+    "brown": "Braun",
+    "title": "Titel",
+    "color": "Farbe",
+    "addtask": "Aufgabe hinzufügen",
+    "save": "Speichern"
+  },
+  "info": {
+    "tasks": "Aufgaben",
+    "completed": "Vollendet",
+    "of": " von "
+  },
+  "list": {
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "markincomplete": "Als unvollständig markieren",
+    "markcomplete": "Als abgeschlossen markieren",
+    "notasks": {
+      "tag": "p",
+      "children": [
+        {
+          "tag": "strong",
+          "innerText": "Sie haben noch keine Aufgaben registriert."
+        },
+        {
+          "tag": "br"
+        },
+        {
+          "tag": "br"
+        },
+        {
+          "tag": "fragment",
+          "innerText": "Erstellen Sie Aufgaben und organisieren Sie Ihre To-Do-Elemente."
+        }
+      ]
+    }
+  },
+  "scroll": {
+    "totop": "Nach oben scrollen"
+  },
+  "todos": {
+    "redirect_text": "Weiterleitung zur Anmeldung …"
+  }
+}

@@ -1,0 +1,17 @@
+model Profile {
+  id                                             Int       @id @default(autoincrement())
+  email                                          String    @unique
+  is_anonymous                                   Boolean?  @default(false)
+  is_active                                      Boolean   @default(true)
+  verified_at                                    DateTime?
+  banned_by                                      Int?
+  banned_at                                      DateTime?
+  banned_until                                   DateTime?
+  banned_reason                                  String?
+  language_code                                  String    @default("en")
+  is_language_ltr                                Boolean   @default(true)
+  createdAt                                      DateTime  @default(now()) @map("created_at")
+  updatedAt                                      DateTime  @updatedAt @map("updated_at")
+  tasks                                          Task[]
+  @@map("profiles")
+}

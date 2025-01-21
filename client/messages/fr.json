@@ -1,0 +1,99 @@
+{
+  "locales": {
+    "de": "Deutsch",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français"
+  },
+  "error": {
+    "error": "Erreur",
+    "internal_server_error": "Erreur interne du serveur",
+    "failed_to_load": "La page que vous avez demandée n'a pas pu être chargée.",
+    "reset": "Réinitialiser",
+    "return_home": "Cliquez ici pour retourner à l'accueil",
+    "something_wrong": "Une erreur s'est produite !"
+  },
+  "navbar": {
+    "todoapp": "Toutes les applications"
+  },
+  "not_found": {
+    "page": {
+      "tag": "article",
+      "className": "max-w-6xl mx-auto",
+      "children": [
+        {
+          "tag": "h1",
+          "innerText": "La page que vous avez demandée n'a pas été trouvée"
+        },
+        {
+          "tag": "p",
+          "children": [
+            {
+              "tag": "a",
+              "href": "/",
+              "innerText": "Cliquez ici pour retourner à l'accueil"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "create": {
+    "back": "Dos"
+  },
+  "createtask": {
+    "createtask": "Créer une tâche"
+  },
+  "task-form": {
+    "titlePlaceholder": "Ex. Brossez-vous les dents",
+    "red": "Rouge",
+    "orange": "Orange",
+    "yellow": "Jaune",
+    "green": "Vert",
+    "blue": "Bleu",
+    "indigo": "Indigo",
+    "violet": "Violet",
+    "pink": "Rose",
+    "brown": "Brun",
+    "title": "Titre",
+    "color": "Couleur",
+    "addtask": "Ajouter une tâche",
+    "save": "Sauvegarder"
+  },
+  "info": {
+    "tasks": "Tâches",
+    "completed": "Complété",
+    "of": " de "
+  },
+  "list": {
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "markincomplete": "Marquer comme incomplet",
+    "markcomplete": "Marquer comme terminé",
+    "notasks": {
+      "tag": "p",
+      "children": [
+        {
+          "tag": "strong",
+          "innerText": "Vous n'avez pas encore de tâches enregistrées."
+        },
+        {
+          "tag": "br"
+        },
+        {
+          "tag": "br"
+        },
+        {
+          "tag": "fragment",
+          "innerText": "Créez des tâches et organisez vos tâches à accomplir."
+        }
+      ]
+    }
+  },
+  "scroll": {
+    "totop": "Faites défiler vers le haut"
+  },
+  "todos": {
+    "redirect_text": "Redirection vers la connexion..."
+  }
+}

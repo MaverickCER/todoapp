@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "baseUrl": ".",
+    "moduleResolution": "Node",
+    "outDir": "dist",
+    "importsNotUsedAsValues": "remove",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@/contracts/*": ["./src/contracts/*"],
+      "@/controllers/*": ["./src/controllers/*"],
+      "@/handlers/*": ["./src/handlers/*"],
+      "@/prisma/*": ["./src/libs/prisma/*"],
+      "@/nodemailer": ["./src/libs/nodemailer"],
+      "@/dompurify": ["./src/libs/dompurify"],
+      "@/prisma": ["./src/libs/prisma"],
+      "@/zod": ["./src/libs/zod"],
+      "@/routes/*": ["./src/routes/*"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/utils": ["./src/utils"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}

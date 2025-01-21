@@ -1,0 +1,99 @@
+{
+  "locales": {
+    "de": "Deutsch",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français"
+  },
+  "error": {
+    "error": "Error",
+    "internal_server_error": "Error Interno del Servidor",
+    "failed_to_load": "La página solicitada no se pudo cargar.",
+    "reset": "Reiniciar",
+    "return_home": "Haga clic aquí para volver a la página de inicio",
+    "something_wrong": "¡Algo salió mal!"
+  },
+  "navbar": {
+    "todoapp": "Todo App"
+  },
+  "not_found": {
+    "page": {
+      "tag": "article",
+      "className": "max-w-6xl mx-auto",
+      "children": [
+        {
+          "tag": "h1",
+          "innerText": "La página solicitada no fue encontrada"
+        },
+        {
+          "tag": "p",
+          "children": [
+            {
+              "tag": "a",
+              "href": "/",
+              "innerText": "Haga clic aquí para volver a la página de inicio"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "create": {
+    "back": "Atrás"
+  },
+  "createtask": {
+    "createtask": "Crear tarea"
+  },
+  "task-form": {
+    "titlePlaceholder": "Por ejemplo, cepíllate los dientes.",
+    "red": "Rojo",
+    "orange": "Naranja",
+    "yellow": "Amarillo",
+    "green": "Verde",
+    "blue": "Azul",
+    "indigo": "Índigo",
+    "violet": "Violeta",
+    "pink": "Rosa",
+    "brown": "Marrón",
+    "title": "Título",
+    "color": "Color",
+    "addtask": "Agregar tarea",
+    "save": "Ahorrar"
+  },
+  "info": {
+    "tasks": "Tareas",
+    "completed": "Terminado",
+    "of": " de "
+  },
+  "list": {
+    "delete": "Borrar",
+    "edit": "Editar",
+    "markincomplete": "Marcar como incompleto",
+    "markcomplete": "Marcar como completado",
+    "notasks": {
+      "tag": "p",
+      "children": [
+        {
+          "tag": "strong",
+          "innerText": "Aún no tienes ninguna tarea registrada."
+        },
+        {
+          "tag": "br"
+        },
+        {
+          "tag": "br"
+        },
+        {
+          "tag": "fragment",
+          "innerText": "Crea tareas y organiza tus elementos pendientes."
+        }
+      ]
+    }
+  },
+  "scroll": {
+    "totop": "Desplazarse hacia arriba"
+  },
+  "todos": {
+    "redirect_text": "Redireccionando al inicio de sesión..."
+  }
+}
