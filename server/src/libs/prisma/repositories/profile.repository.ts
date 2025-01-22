@@ -1,5 +1,10 @@
-import { prisma } from '@/prisma';
-import { profileSchemaCreate, profileSchemaUniqueWhere, profileSchemaUpdate, TProfile } from '@/zod';
+import { prisma } from "@/prisma";
+import {
+  profileSchemaCreate,
+  profileSchemaUniqueWhere,
+  profileSchemaUpdate,
+  TProfile,
+} from "@/zod";
 
 /**
  * @name profileRepository
@@ -20,8 +25,11 @@ export const profileRepository = {
     const user = await prisma.profile.create({
       data: { ...validatedData.data },
     });
-    if (user.email === 'anonymous+@gmail.com') {
-      return await profileRepository.update({ id: user.id }, { email: 'anonymous+' + user.id + '@gmail.com' });
+    if (user.email === "anonymous+@gmail.com") {
+      return await profileRepository.update(
+        { id: user.id },
+        { email: "anonymous+" + user.id + "@gmail.com" },
+      );
     }
     return user;
   },
@@ -40,7 +48,10 @@ export const profileRepository = {
     const validatedData = profileSchemaUpdate.safeParse(data);
     if (!validatedData.success) throw new Error(validatedData.error.message);
 
-    return await prisma.profile.update({ where: validatedWhere.data, data: validatedData.data });
+    return await prisma.profile.update({
+      where: validatedWhere.data,
+      data: validatedData.data,
+    });
   },
 
   /**

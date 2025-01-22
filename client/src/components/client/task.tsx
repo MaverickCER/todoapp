@@ -73,8 +73,12 @@ export function Task({ task }) {
             <p className='text-lg font-semibold mb-3'>{t('confirm')}</p>
             <p>{t('undoimpossible')}</p>
             <div className='flex justify-end space-x-3 -mb-6'>
-              <button type="button" className='p-3 hover:opacity-70' onClick={toggleDialog}>{t('cancel')}</button>
-              <button type="button" className='p-3 hover:opacity-70' onClick={handleDelete}>{t('delete')}</button>
+              <button type='button' className='p-3 hover:opacity-70' onClick={toggleDialog}>
+                {t('cancel')}
+              </button>
+              <button type='button' className='p-3 hover:opacity-70' onClick={handleDelete}>
+                {t('delete')}
+              </button>
             </div>
           </span>
         </div>

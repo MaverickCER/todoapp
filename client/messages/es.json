@@ -5,6 +5,9 @@
     "es": "Español",
     "fr": "Français"
   },
+  "dialog": {
+    "close": "Cerca"
+  },
   "error": {
     "error": "Error",
     "internal_server_error": "Error Interno del Servidor",
@@ -65,12 +68,17 @@
     "completed": "Terminado",
     "of": " de "
   },
-  "list": {
+  "task": {
+    "confirm": "Eliminar tarea",
+    "undoimpossible": "¿Está seguro de que desea eliminar esta tarea? Esta acción no se puede deshacer.",
+    "cancel": "Cancelar",
     "delete": "Borrar",
     "edit": "Editar",
     "markincomplete": "Marcar como incompleto",
-    "markcomplete": "Marcar como completado",
-    "notasks": {
+    "markcomplete": "Marcar como completado"
+  },
+  "notasks": {
+    "component": {
       "tag": "p",
       "children": [
         {

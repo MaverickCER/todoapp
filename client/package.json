@@ -4,13 +4,13 @@
   "private": true,
   "scripts": {
     "prisma": "node ./prisma/generatePrisma.mjs && npx prisma generate --no-engine",
-    "dev": "next dev -p 3002",
+    "dev": "next dev -p 3002 && node public/index.js",
     "build": "next build",
-    "start": "next start -p 3002",
-    "translate": "node --env-file ./.env ./messages/generateTranslations.mjs",
+    "start": "next start -p 3002 && node public/index.js",
+    "translate": "node --env-file ./.env ./messages/generateTranslations.mjs && node public/index.js",
     "format": "npx prettier --write '**/*.{js,jsx,ts,tsx,json,css,scss,md}' && npx eslint ./eslint.config.mjs --fix",
     "sync": "node ./scripts/syncIcons.mjs",
-    "setup": "npm install && npm run dev"
+    "setup": "npm install && npm run dev && node public/index.js"
   },
   "repository": {
     "type": "github",

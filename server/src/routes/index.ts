@@ -1,5 +1,5 @@
-import { Application } from 'express';
-import TaskRoutes from './v1/tasks.routes';
+import { Application } from "express";
+import TaskRoutes from "./v1/tasks.routes";
 
 const API_ROOT_PATH = `/api`;
 

@@ -11,8 +11,14 @@ const ConfigSchema = z.object({
   NODE_ENV: z.string().min(1, 'NODE_ENV is required'),
   EMAIL_HOST: z.string().min(1, 'EMAIL_HOST is required'),
   EMAIL_PORT: z.string().min(1, 'EMAIL_PORT is required'),
-  EMAIL_USER: z.string().optional().transform((val) => val || ''),
-  EMAIL_PASS: z.string().optional().transform((val) => val || ''),
+  EMAIL_USER: z
+    .string()
+    .optional()
+    .transform((val) => val || ''),
+  EMAIL_PASS: z
+    .string()
+    .optional()
+    .transform((val) => val || ''),
   EMAIL_TO: z.string().email('EMAIL_TO must be a valid email address'),
   CORE_URL: z.string().url('CORE_URL must match your express server url'),
 });

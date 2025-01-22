@@ -1,8 +1,8 @@
-import { config } from '@/contracts/config.constants';
-import { sanitizeHtml } from '@/dompurify'; // Import the sanitizer from dompurify module
-import { logger, stringify } from '@/utils';
-import nodemailer from 'nodemailer';
-import { z } from 'zod';
+import { config } from "@/contracts/config.constants";
+import { sanitizeHtml } from "@/dompurify"; // Import the sanitizer from dompurify module
+import { logger, stringify } from "@/utils";
+import nodemailer from "nodemailer";
+import { z } from "zod";
 
 // Define the Zod schema for validating the email data
 const emailPayloadSchema = z.object({
@@ -26,7 +26,7 @@ export const mailer = {
    */
   async send(emailData: TEmailPayloadSchema): Promise<boolean> {
     return await logger.errorHandler(
-      'nodemailer.send',
+      "nodemailer.send",
       async () => {
         // Validate the email data using Zod
         const validatedData = emailPayloadSchema.safeParse(emailData);
@@ -37,13 +37,15 @@ export const mailer = {
         const user = config.EMAIL_USER;
         const pass = config.EMAIL_PASS;
         if (!user || !pass) {
-          logger.warn(`Unable to send email due to invalid config - ${stringify(validatedData.data)}`)
+          logger.warn(
+            `Unable to send email due to invalid config - ${stringify(validatedData.data)}`,
+          );
           return false;
         }
 
         // Create a Nodemailer transporter
         const transporter = nodemailer.createTransport({
-          service: 'gmail',
+          service: "gmail",
           auth: {
             user: config.EMAIL_USER,
             pass: config.EMAIL_PASS,
@@ -55,19 +57,21 @@ export const mailer = {
         // Sanitize the text content (remove all HTML tags)
         let sanitizedText = text;
         try {
-          sanitizedText = await sanitizeHtml.sanitize(text, { ALLOWED_TAGS: [] }); // No tags allowed, pure text
+          sanitizedText = await sanitizeHtml.sanitize(text, {
+            ALLOWED_TAGS: [],
+          }); // No tags allowed, pure text
         } catch (error) {
-          logger.warn('Error sanitizing text content:', error);
+          logger.warn("Error sanitizing text content:", error);
           sanitizedText = text; // If sanitization fails, keep the original text
         }
 
         // Sanitize the HTML content (remove JavaScript but keep styles, links, etc.)
         let sanitizedHtml = html;
         try {
-          sanitizedHtml = await sanitizeHtml.disinfect(html || text || ''); // Use disinfect to remove JS, but preserve other content
+          sanitizedHtml = await sanitizeHtml.disinfect(html || text || ""); // Use disinfect to remove JS, but preserve other content
         } catch (error) {
-          logger.warn('Error sanitizing HTML content:', error);
-          sanitizedHtml = html || ''; // If sanitization fails, use the original HTML (or empty string if not provided)
+          logger.warn("Error sanitizing HTML content:", error);
+          sanitizedHtml = html || ""; // If sanitization fails, use the original HTML (or empty string if not provided)
         }
 
         // Define the email options

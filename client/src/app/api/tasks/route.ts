@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
       const session = await getServerSession();
       const sessionEmail = (session && session.user && session.user.email) || '';
       const profile = await profileRepository.findUnique({ email: sessionEmail });
-      console.error({profile, session});
+      console.error({ profile, session });
       if (!profile || !profile.id) {
         return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
       }

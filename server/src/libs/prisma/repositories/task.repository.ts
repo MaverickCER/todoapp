@@ -1,5 +1,5 @@
-import { prisma } from '@/prisma';
-import parseDates from '@/utils/parseDates';
+import { prisma } from "@/prisma";
+import parseDates from "@/utils/parseDates";
 import {
   taskSchemaCreate,
   taskSchemaDeleteProfileWhere,
@@ -7,7 +7,7 @@ import {
   taskSchemaUniqueWhere,
   taskSchemaUpdate,
   TTask,
-} from '@/zod';
+} from "@/zod";
 
 /**
  * @name taskRepository
@@ -43,7 +43,10 @@ export const taskRepository = {
     const validatedData = taskSchemaUpdate.safeParse(parseDates(data));
     if (!validatedData.success) throw new Error(validatedData.error.message);
 
-    return await prisma.task.update({ where: validatedWhere.data, data: validatedData.data });
+    return await prisma.task.update({
+      where: validatedWhere.data,
+      data: validatedData.data,
+    });
   },
 
   /**
@@ -81,7 +84,9 @@ export const taskRepository = {
    * @returns {Promise<object>} The deleted task.
    * @throws {Error} Validation errors if the arguements are invalid.
    */
-  async delete(where: { id: number; profileId: number } | { profileId: number }) {
+  async delete(
+    where: { id: number; profileId: number } | { profileId: number },
+  ) {
     // Validate the "where" condition
     const validatedWhere = taskSchemaDeleteProfileWhere.safeParse(where);
     if (!validatedWhere.success) throw new Error(validatedWhere.error.message);

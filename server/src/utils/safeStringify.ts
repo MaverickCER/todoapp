@@ -1,5 +1,5 @@
-const LIMIT_REPLACE_NODE = '[...]'; // Placeholder for nodes exceeding depth or edges limit
-const CIRCULAR_REPLACE_NODE = '[Circular]'; // Placeholder for circular references
+const LIMIT_REPLACE_NODE = "[...]"; // Placeholder for nodes exceeding depth or edges limit
+const CIRCULAR_REPLACE_NODE = "[Circular]"; // Placeholder for circular references
 
 // Define the structure for options that control depth and edge limits
 interface StringifyOptions {
@@ -44,40 +44,74 @@ function decirc(
 ): unknown {
   depth++; // Increment depth as we dive deeper into the object
 
-  if (typeof val === 'object' && val !== null) {
+  if (typeof val === "object" && val !== null) {
     // Circular reference detection
     if (stack.has(val as object)) {
       const keysInCycle = stack.get(val as object)!;
-      setReplace(`${CIRCULAR_REPLACE_NODE}: ${keysInCycle.join(' -> ')}`, val, key, parent, replacerStack, tempChanges);
+      setReplace(
+        `${CIRCULAR_REPLACE_NODE}: ${keysInCycle.join(" -> ")}`,
+        val,
+        key,
+        parent,
+        replacerStack,
+        tempChanges,
+      );
       return;
     }
 
     // Depth limit check
     if (options.depthLimit && depth > options.depthLimit) {
-      setReplace(LIMIT_REPLACE_NODE, val, key, parent, replacerStack, tempChanges);
+      setReplace(
+        LIMIT_REPLACE_NODE,
+        val,
+        key,
+        parent,
+        replacerStack,
+        tempChanges,
+      );
       return;
     }
 
     // Edge limit check
     if (options.edgesLimit && edgeIndex + 1 > options.edgesLimit) {
-      setReplace(LIMIT_REPLACE_NODE, val, key, parent, replacerStack, tempChanges);
+      setReplace(
+        LIMIT_REPLACE_NODE,
+        val,
+        key,
+        parent,
+        replacerStack,
+        tempChanges,
+      );
       return;
     }
 
     // Add to stack to detect circular references, along with the key
-    stack.set(val as object, [...(stack.get(val as object) || []), String(key)]);
+    stack.set(val as object, [
+      ...(stack.get(val as object) || []),
+      String(key),
+    ]);
 
     if (Array.isArray(val)) {
       // Handle array elements (including nested arrays)
       val.forEach((item, index) =>
-        decirc(item, index, index, stack, val as object, depth, options, replacerStack, tempChanges),
+        decirc(
+          item,
+          index,
+          index,
+          stack,
+          val as object,
+          depth,
+          options,
+          replacerStack,
+          tempChanges,
+        ),
       );
     } else {
       // Handle object properties (including nested objects)
       const keys = Object.keys(val);
       keys.sort().forEach((subKey, index) => {
         decirc(
-          (val as object)[subKey],
+          (val as Record<string, unknown>)[subKey],
           subKey,
           index,
           stack,
@@ -128,7 +162,7 @@ function setReplace(
     }
   } else {
     // Standard value assignment for non-getter properties
-    (parent as object)[key] = replaceValue;
+    (parent as Record<string, unknown>)[key] = replaceValue;
     tempChanges.push([parent, key, originalValue]);
   }
 }
@@ -140,7 +174,7 @@ function setReplace(
  */
 function wrapReplacer(replacer: Replacer | undefined): Replacer {
   return (key, value) => {
-    if (typeof value === 'function') {
+    if (typeof value === "function") {
       return value.name ? `[${value.name}()]` : `[anonymous()]`;
     }
     return replacer ? replacer(key, value) : value;
@@ -153,8 +187,13 @@ function wrapReplacer(replacer: Replacer | undefined): Replacer {
  * @param replacerStack The stack of values to be replaced.
  * @returns A new replacer function that uses the replacer stack for replacement.
  */
-function replaceGetterValues(replacer: Replacer, replacerStack: ReplacerStack): Replacer {
-  const replaceMap = new Map(replacerStack.map(([obj, key, value]) => [`${obj}:${key}`, value]));
+function replaceGetterValues(
+  replacer: Replacer,
+  replacerStack: ReplacerStack,
+): Replacer {
+  const replaceMap = new Map(
+    replacerStack.map(([obj, key, value]) => [`${obj}:${key}`, value]),
+  );
 
   return (key, value) => {
     const replacement = replaceMap.get(`${value}:${key}`);
@@ -198,23 +237,35 @@ export function stringify(
 
     // Check if the input is an object and handle accordingly
     const tmp =
-      typeof obj === 'object' && obj !== null
-        ? decirc(obj, '', 0, new WeakMap(), undefined, 0, options, replacerStack, tempChanges)
-        : typeof obj === 'function'
+      typeof obj === "object" && obj !== null
+        ? decirc(
+            obj,
+            "",
+            0,
+            new WeakMap(),
+            undefined,
+            0,
+            options,
+            replacerStack,
+            tempChanges,
+          )
+        : typeof obj === "function"
           ? obj.name
             ? `[${obj.name}()]`
-            : '[anonymous()]'
+            : "[anonymous()]"
           : String(obj);
 
     // Convert non-objects to their string representation
-    if (typeof tmp === 'string') return tmp;
+    if (typeof tmp === "string") return tmp;
 
     // Determine the replacer function to use
     const effectiveReplacer =
-      replacerStack.length === 0 ? wrapReplacer(replacer) : replaceGetterValues(wrapReplacer(replacer), replacerStack);
+      replacerStack.length === 0
+        ? wrapReplacer(replacer)
+        : replaceGetterValues(wrapReplacer(replacer), replacerStack);
 
     return JSON.stringify(tmp, effectiveReplacer, spacer);
   } catch {
-    return '[unable to serialize, circular reference is too complex to analyze]';
+    return "[unable to serialize, circular reference is too complex to analyze]";
   }
 }

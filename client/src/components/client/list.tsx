@@ -5,10 +5,12 @@ import ScrollToTopButton from './scroll-to-top-button';
 import Task from './task';
 
 export function List({ children }) {
-  const { taskContext: { tasks } } = useTaskContext();
+  const {
+    taskContext: { tasks },
+  } = useTaskContext();
 
   if (!tasks || !tasks.length) {
-    return <>{children}</>
+    return <>{children}</>;
   }
 
   return (

@@ -18,8 +18,21 @@ export const sanitizeHtml = {
       // Create a new DOM environment with jsdom
       const dom = new JSDOM();
       const document = dom.window.document;
+      let mediaElement: HTMLAudioElement | HTMLImageElement | HTMLVideoElement;
 
-      const mediaElement: HTMLAudioElement | HTMLImageElement | HTMLVideoElement = document.createElement(type);
+      switch (type) {
+        case 'audio':
+          mediaElement = document.createElement('audio') as HTMLAudioElement;
+          break;
+        case 'image':
+          mediaElement = document.createElement('img') as HTMLImageElement;
+          break;
+        case 'video':
+          mediaElement = document.createElement('video') as HTMLVideoElement;
+          break;
+        default:
+          throw new Error('Invalid media type');
+      }
 
       // Append the media element to the document to trigger load
       document.body.appendChild(mediaElement);

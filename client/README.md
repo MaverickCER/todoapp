@@ -17,12 +17,14 @@ This project is a full-stack Todo List application built using **Next.js**, **Ex
 ## Features
 
 ### 1. Home View
+
 - Displays a list of tasks with **Title**, **Checkbox/Toggler** for completed status, and a **Delete Button**.
 - Shows a summary of tasks: `"Tasks: X"`, `"Completed: Y of X"`.
 - Task cards are clickable, leading to the **Edit Task Page**.
 - **Create Task** button navigates to the task creation form.
 
 ### 2. Create/Edit Task Page
+
 - **Form** with fields:
   - **Title** (required)
   - **Color** (selectable options: red, blue, green)
@@ -31,58 +33,70 @@ This project is a full-stack Todo List application built using **Next.js**, **Ex
 - Tasks can be discarded if the user navigates back without saving.
 
 ### 3. Additional Features
+
 - Toggle a task’s completion status directly from the Home View.
 - Delete tasks with a confirmation prompt before removal.
 
 ## Installation and Setup
 
 ### 1. **Back-End** (Express.js with Prisma)
+
 - **Clone the Repository**:
-    ```bash
-    git clone <your-repo-url>
-    cd backend
-    ```
+
+  ```bash
+  git clone <your-repo-url>
+  cd backend
+  ```
 
 - **Install Dependencies**:
-    ```bash
-    npm install
-    ```
+
+  ```bash
+  npm install
+  ```
 
 - **Configure Database**:
-    - Ensure you have MySQL installed and running.
-    - Create a `.env` file in the root directory with the following content:
-    ```env
-    DATABASE_URL="mysql://user:password@localhost:3306/todo_app"
-    ```
+
+  - Ensure you have MySQL installed and running.
+  - Create a `.env` file in the root directory with the following content:
+
+  ```env
+  DATABASE_URL="mysql://user:password@localhost:3306/todo_app"
+  ```
 
 - **Run Database Migrations**:
-    ```bash
-    npx prisma migrate dev --name init
-    ```
+
+  ```bash
+  npx prisma migrate dev --name init
+  ```
 
 - **Start the Server**:
-    ```bash
-    npm run dev
-    ```
+
+  ```bash
+  npm run dev
+  ```
 
 - The API will be running at `http://localhost:5000`.
 
 ### 2. **Front-End** (Next.js with Tailwind CSS)
+
 - **Clone the Repository**:
-    ```bash
-    git clone <your-repo-url>
-    cd frontend
-    ```
+
+  ```bash
+  git clone <your-repo-url>
+  cd frontend
+  ```
 
 - **Install Dependencies**:
-    ```bash
-    npm install
-    ```
+
+  ```bash
+  npm install
+  ```
 
 - **Start the Development Server**:
-    ```bash
-    npm run dev
-    ```
+
+  ```bash
+  npm run dev
+  ```
 
 - The front-end will be running at `http://localhost:3000`.
 
@@ -146,6 +160,7 @@ Tailwind CSS is used for styling to ensure a clean, responsive UI. Key design co
 ## Project Setup
 
 ### Steps for Database Initialization (Prisma)
+
 1. Clone the backend repository.
 2. Ensure that MySQL is running and create a database for the project.
 3. Add the correct `DATABASE_URL` in the `.env` file.
@@ -153,6 +168,7 @@ Tailwind CSS is used for styling to ensure a clean, responsive UI. Key design co
 5. Start the backend server.
 
 ### Steps for Running the Frontend
+
 1. Clone the frontend repository.
 2. Install dependencies with `npm install`.
 3. Start the Next.js app using `npm run dev`.

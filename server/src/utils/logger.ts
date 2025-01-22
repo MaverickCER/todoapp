@@ -1,6 +1,6 @@
-import { config } from '@/contracts/config.constants.js';
-import { mailer } from '@/nodemailer';
-import { stringify } from './safeStringify';
+import { config } from "@/contracts/config.constants.js";
+import { mailer } from "@/nodemailer";
+import { stringify } from "./safeStringify";
 
 // Mapping log levels to numbers for easy comparison
 const logLevels = {
@@ -12,29 +12,32 @@ const logLevels = {
 
 // Check if the current log level allows logging for the requested level
 const canLog = (level: keyof typeof logLevels) => {
-  const debugLevel = process.env.DEBUG_LEVEL as keyof typeof logLevels | undefined;
+  const debugLevel = process.env.DEBUG_LEVEL as
+    | keyof typeof logLevels
+    | undefined;
 
   // Use a fallback value if process.env.DEBUG_LEVEL is not valid
-  const currentLogLevel = debugLevel && logLevels[debugLevel] !== undefined ? debugLevel : 'info';
+  const currentLogLevel =
+    debugLevel && logLevels[debugLevel] !== undefined ? debugLevel : "info";
 
   return logLevels[level] <= logLevels[currentLogLevel];
 };
 
 // Logger functions for different log levels
 const debug = (message: string, ...rest: unknown[]) => {
-  if (canLog('debug')) console.log(`[DEBUG - SERVER]`, message, ...rest);
+  if (canLog("debug")) console.log(`[DEBUG - SERVER]`, message, ...rest);
 };
 
 const info = (message: string, ...rest: unknown[]) => {
-  if (canLog('info')) console.info(`[INFO - SERVER]`, message, ...rest);
+  if (canLog("info")) console.info(`[INFO - SERVER]`, message, ...rest);
 };
 
 const warn = (message: string, ...rest: unknown[]) => {
-  if (canLog('warn')) console.warn(`[WARN - SERVER]`, message, ...rest);
+  if (canLog("warn")) console.warn(`[WARN - SERVER]`, message, ...rest);
 };
 
 const error = (message: string, ...rest: unknown[]) => {
-  if (canLog('error')) {
+  if (canLog("error")) {
     console.error(`[ERROR - SERVER]`, message, ...rest);
     (async (message) => {
       const sent = await mailer.send({
@@ -42,27 +45,36 @@ const error = (message: string, ...rest: unknown[]) => {
         subject: `Action Required! maverickcer.com encountered server error`,
         text: message,
       });
-      console.error(sent ? 'Report sent via email from server' : 'Report could not be sent from server');
+      console.error(
+        sent
+          ? "Report sent via email from server"
+          : "Report could not be sent from server",
+      );
     })(message);
   }
 };
 
 const parseError = (error: unknown): string => {
   let message: string;
-  let stack = '';
+  let stack = "";
   if (error instanceof Error) {
-    stack = stringify(error.stack || 'stack could not be stringified');
-    message = `${error.message || ''} - ${stack}`;
+    stack = stringify(error.stack || "stack could not be stringified");
+    message = `${error.message || ""} - ${stack}`;
   } else if (
-    typeof error === 'object' &&
+    typeof error === "object" &&
     error !== null &&
-    'message' in error &&
-    typeof error['message'] === 'string'
+    "message" in error &&
+    typeof error["message"] === "string"
   ) {
     message = error.message;
-  } else if (typeof error === 'object' && error !== null && 'error' in error && typeof error['error'] === 'string') {
+  } else if (
+    typeof error === "object" &&
+    error !== null &&
+    "error" in error &&
+    typeof error["error"] === "string"
+  ) {
     message = error.error;
-  } else if (typeof error === 'string') {
+  } else if (typeof error === "string") {
     message = `${error}`;
   } else {
     message = `Unknown Error`;
@@ -88,12 +100,14 @@ export async function errorHandler<P, R>(
   params: P,
   fallback: R,
   isCritical: boolean = false,
-): Promise<R | (R extends 'message' ? string : never)> {
+): Promise<R | (R extends "message" ? string : never)> {
   const parameters = stringify(params);
-  let returnValue: R | (R extends 'message' ? string : never) | undefined; // Variable to store return value
+  let returnValue: R | (R extends "message" ? string : never) | undefined; // Variable to store return value
 
   try {
-    logger.debug(`${origin}.${callback.name} starting with params: ${parameters}`);
+    logger.debug(
+      `${origin}.${callback.name} starting with params: ${parameters}`,
+    );
     returnValue = await callback(params); // Capture return value
   } catch (error) {
     const source = `${origin}.${callback.name} caught with params: ${parameters} | `;
@@ -107,8 +121,8 @@ export async function errorHandler<P, R>(
     }
 
     // Return fallback value or error message
-    if (fallback === 'message') {
-      returnValue = message as R extends 'message' ? string : never;
+    if (fallback === "message") {
+      returnValue = message as R extends "message" ? string : never;
     } else {
       returnValue = fallback;
     }
