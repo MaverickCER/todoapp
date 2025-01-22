@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect } from "react";
+import { MutableRefObject, useEffect } from 'react';
 
 /**
  * @name useSemanticDialog
@@ -12,7 +12,7 @@ import { MutableRefObject, useEffect } from "react";
 export const useSemanticDialog = (
   ref: MutableRefObject<HTMLDialogElement | null>,
   method: 'show' | 'showModal',
-  open: boolean
+  open: boolean,
 ) => {
   useEffect(() => {
     const dialog = ref.current; // Get the current dialog reference
@@ -32,6 +32,6 @@ export const useSemanticDialog = (
       }
     }
   }, [open, method, ref]); // Dependency array includes open state, method, and ref
-}
+};
 
 export default useSemanticDialog;

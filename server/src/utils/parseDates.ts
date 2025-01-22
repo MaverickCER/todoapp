@@ -1,4 +1,4 @@
-import { TTask } from '@/zod';
+import { TTask } from "@/zod";
 
 /**
  * Parse the date fields in a task or an array of tasks.
@@ -8,13 +8,13 @@ import { TTask } from '@/zod';
  * @returns A new object or array of tasks with date strings converted to Date objects.
  */
 export const parseDates = (tasks: unknown) => {
-  if (!tasks || typeof tasks !== 'object') return tasks;
+  if (!tasks || typeof tasks !== "object") return tasks;
   if (Array.isArray(tasks)) {
     return tasks.map((task: TTask) => {
       return Object.entries(task).reduce(
         (acc, [key, value]) => {
           const date = new Date(`${value}`);
-          if (isNaN(date.getTime()) || key.toLowerCase().includes('id')) {
+          if (isNaN(date.getTime()) || key.toLowerCase().includes("id")) {
             acc[key] = value;
           } else {
             acc[key] = date;
@@ -30,7 +30,7 @@ export const parseDates = (tasks: unknown) => {
   return Object.entries(tasks).reduce(
     (acc, [key, value]) => {
       const date = new Date(`${value}`);
-      if (isNaN(date.getTime()) || key.toLowerCase().includes('id')) {
+      if (isNaN(date.getTime()) || key.toLowerCase().includes("id")) {
         acc[key] = value; // If it's not a valid date, leave the value as it is
       } else {
         acc[key] = date; // If it's a valid date, convert it to a Date object

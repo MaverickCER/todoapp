@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export const taskSchema = z.object({
   id: z
@@ -29,7 +29,9 @@ export const taskSchemaCreate = taskSchema
     color: z.string(),
   });
 
-export const taskSchemaCreateClient = taskSchemaCreate.omit({ profileId: true });
+export const taskSchemaCreateClient = taskSchemaCreate.omit({
+  profileId: true,
+});
 
 export const taskSchemaUpdate = taskSchema.partial();
 
@@ -55,7 +57,9 @@ export const tasksSchemaProfileId = z.object({
     .transform((val) => parseInt(`${val}`, 10)),
 });
 
-export const taskSchemaDeleteProfileWhere = taskSchemaUniqueWhere.or(taskSchemaProfileWhere);
+export const taskSchemaDeleteProfileWhere = taskSchemaUniqueWhere.or(
+  taskSchemaProfileWhere,
+);
 
 export const taskSchemaFindManyhere = z.object({
   profileId: z.number().int(),

@@ -1,2 +1,3 @@
 # assets
+
 This folder is a collection of static assets like icons, images, and other media files. These assets are typically used throughout the application to enhance the UI and user experience. In a modern React-based application (especially with tools like Next.js), this folder is often managed and optimized through automated scripts. The goal is to handle assets efficiently by optimizing file sizes, converting formats, and ensuring they can be easily accessed and used in a way that is consistent and optimized for performance. In this particular application, assets are optimized by executing npm run sync. The output will advise when files should be moved to an external CDN for improved performance.

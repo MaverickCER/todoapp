@@ -5,6 +5,9 @@
     "es": "Español",
     "fr": "Français"
   },
+  "dialog": {
+    "close": "Schließen"
+  },
   "error": {
     "error": "Fehler",
     "internal_server_error": "Interner Serverfehler",
@@ -65,12 +68,17 @@
     "completed": "Vollendet",
     "of": " von "
   },
-  "list": {
+  "task": {
+    "confirm": "Aufgabe löschen",
+    "undoimpossible": "Möchten Sie diese Aufgabe wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "cancel": "Stornieren",
     "delete": "Löschen",
     "edit": "Bearbeiten",
     "markincomplete": "Als unvollständig markieren",
-    "markcomplete": "Als abgeschlossen markieren",
-    "notasks": {
+    "markcomplete": "Als abgeschlossen markieren"
+  },
+  "notasks": {
+    "component": {
       "tag": "p",
       "children": [
         {

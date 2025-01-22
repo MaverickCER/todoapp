@@ -3,5 +3,5 @@ import Image from 'next/image';
 import ClipboardImage from './Clipboard.webp';
 import LogoImage from './Logo.webp';
 
-export const Clipboard = (props) => <Image src={ClipboardImage} aria-hidden="true" alt="Clipboard" {...props} />
-export const Logo = (props) => <Image src={LogoImage} aria-hidden="true" alt="Logo" {...props} />
+export const Clipboard = (props) => <Image src={ClipboardImage} aria-hidden='true' alt='Clipboard' {...props} />;
+export const Logo = (props) => <Image src={LogoImage} aria-hidden='true' alt='Logo' {...props} />;

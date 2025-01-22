@@ -5,6 +5,9 @@
     "es": "Español",
     "fr": "Français"
   },
+  "dialog": {
+    "close": "Fermer"
+  },
   "error": {
     "error": "Erreur",
     "internal_server_error": "Erreur interne du serveur",
@@ -65,12 +68,17 @@
     "completed": "Complété",
     "of": " de "
   },
-  "list": {
+  "task": {
+    "confirm": "Supprimer la tâche",
+    "undoimpossible": "Etes-vous sûr de vouloir supprimer cette tâche ? Cette action ne peut pas être annulée.",
+    "cancel": "Annuler",
     "delete": "Supprimer",
     "edit": "Modifier",
     "markincomplete": "Marquer comme incomplet",
-    "markcomplete": "Marquer comme terminé",
-    "notasks": {
+    "markcomplete": "Marquer comme terminé"
+  },
+  "notasks": {
+    "component": {
       "tag": "p",
       "children": [
         {

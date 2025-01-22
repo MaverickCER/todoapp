@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export const profileSchema = z.object({
   id: z.number().int().optional(),
@@ -10,7 +10,7 @@ export const profileSchema = z.object({
   banned_at: z.date().nullable().optional(),
   banned_until: z.date().nullable().optional(),
   banned_reason: z.string().nullable().optional(),
-  language_code: z.string().default('en').optional(),
+  language_code: z.string().default("en").optional(),
   is_language_ltr: z.boolean().default(true).optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),

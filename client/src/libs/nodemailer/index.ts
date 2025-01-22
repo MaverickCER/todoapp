@@ -37,7 +37,7 @@ export const mailer = {
         const user = config.EMAIL_USER;
         const pass = config.EMAIL_PASS;
         if (!user || !pass) {
-          logger.warn(`Unable to send email due to invalid config - ${stringify(validatedData.data)}`)
+          logger.warn(`Unable to send email due to invalid config - ${stringify(validatedData.data)}`);
           return false;
         }
 
